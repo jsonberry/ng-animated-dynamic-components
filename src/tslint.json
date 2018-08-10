@@ -1,6 +1,7 @@
 {
     "extends": "../tslint.json",
     "rules": {
+      "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
         "directive-selector": [
             true,
             "attribute",

@@ -1,4 +1,8 @@
-# AngularGallery
+# Angular Animated Dynamic Components
+
+The challenge is to “route” between different views in a fixed, somewhat small area, imagine a mobile phone size screen on a desktop - but you can’t use the Router. The first pass is not very extensible: creating embedded views in a View Container with template refs. I’d rather use a componentFactory, but the challenge with that is getting “full page animation transitions” working with that approach...
+
+------------------------------------------------
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
 

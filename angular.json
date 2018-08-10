@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-gallery": {
+    "ng-animated-dynamic-components": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-gallery",
+            "outputPath": "dist/ng-animated-dynamic-components",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-gallery:build"
+            "browserTarget": "ng-animated-dynamic-components:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-gallery:build:production"
+              "browserTarget": "ng-animated-dynamic-components:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-gallery:build"
+            "browserTarget": "ng-animated-dynamic-components:build"
           }
         },
         "test": {
@@ -95,7 +95,7 @@
         }
       }
     },
-    "angular-gallery-e2e": {
+    "ng-animated-dynamic-components-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +103,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-gallery:serve"
+            "devServerTarget": "ng-animated-dynamic-components:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-gallery:serve:production"
+              "devServerTarget": "ng-animated-dynamic-components:serve:production"
             }
           }
         },
@@ -123,5 +123,5 @@
       }
     }
   },
-  "defaultProject": "angular-gallery"
+  "defaultProject": "ng-animated-dynamic-components"
 }

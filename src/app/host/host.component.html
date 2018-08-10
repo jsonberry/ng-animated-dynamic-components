@@ -1,0 +1,26 @@
+<button (click)="loadTemplate(tmp1)">Load One</button>
+<button (click)="loadTemplate(tmp2)">Load Two</button>
+<button (click)="loadTemplate(tmp3)">Load Three</button>
+
+<ng-template #tmp1>
+  <app-view-one
+    [@flyInOut]="'in'"
+    (@flyInOut.done)="animationDone($event)"
+  ></app-view-one>
+</ng-template>
+
+<ng-template #tmp2>
+  <app-view-two
+    [@flyInOut]="'in'"
+    (@flyInOut.done)="animationDone($event)"
+  ></app-view-two>
+</ng-template>
+
+<ng-template #tmp3>
+  <app-view-three
+    [@flyInOut]="'in'"
+    (@flyInOut.done)="animationDone($event)"
+  ></app-view-three>
+</ng-template>
+
+<ng-container #vcr></ng-container>
