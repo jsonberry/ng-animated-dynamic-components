@@ -1,21 +1,21 @@
-import {ViewOneComponent} from '@/view-one'
-import {ViewTwoComponent} from '@/view-two'
-import {ViewThreeComponent} from '@/view-three'
+import {
+  animate,
+  AnimationEvent,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations'
 import {
   Component,
   OnInit,
+  TemplateRef,
   ViewChild,
   ViewContainerRef,
-  TemplateRef,
 } from '@angular/core'
-import {
-  trigger,
-  state,
-  transition,
-  style,
-  animate,
-  AnimationEvent,
-} from '@angular/animations'
+import {ViewOneComponent} from '../view-one'
+import {ViewThreeComponent} from '../view-three'
+import {ViewTwoComponent} from '../view-two'
 
 @Component({
   selector: 'app-host',
