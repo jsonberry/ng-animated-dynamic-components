@@ -2,15 +2,13 @@ import {
   Component,
   ViewChild,
   ViewContainerRef,
-  ContentChild,
-  ComponentRef,
   Type,
   TemplateRef,
-  EmbeddedViewRef,
+  OnInit,
 } from '@angular/core'
-import {ViewOneComponent} from '@/view-one'
-import {ViewTwoComponent} from '@/view-two'
-import {ViewThreeComponent} from '@/view-three'
+import {ViewOneComponent} from '../view-one'
+import {ViewTwoComponent} from '../view-two'
+import {ViewThreeComponent} from '../view-three'
 import {
   animate,
   AnimationEvent,
@@ -19,12 +17,14 @@ import {
   transition,
   trigger,
 } from '@angular/animations'
+import {ContainerFacade, initialState} from '../container-state/+state'
+import {Observable} from 'rxjs'
 
 @Component({
   selector: 'app-host-declarative',
   templateUrl: './host-declarative.component.html',
   styleUrls: ['./host-declarative.component.css'],
-  entryComponents: [ViewOneComponent, ViewTwoComponent, ViewThreeComponent],
+  entryComponents: [initialState.components],
   animations: [
     trigger('flyInOut', [
       state('in', style({transform: 'translateX(0)'})),
@@ -38,36 +38,27 @@ import {
     ]),
   ],
 })
-export class HostDeclarativeComponent {
-  @ViewChild(TemplateRef) public tpl: TemplateRef<any>
-
+export class HostDeclarativeComponent implements OnInit {
+  @ViewChild(TemplateRef)
+  public tpl: TemplateRef<any>
   @ViewChild('vcr', {read: ViewContainerRef})
   public vcr: ViewContainerRef
+  public currentComponent$: Observable<Type<ViewOneComponent | ViewTwoComponent | ViewThreeComponent>>
 
-  @ContentChild('child')
-  public contentChildRef: ContentChild
+  constructor(private facade: ContainerFacade) {}
 
-  public comp1 = ViewOneComponent
-  public comp2 = ViewTwoComponent
-  public comp3 = ViewThreeComponent
-  public component: ComponentRef<
-    ViewOneComponent | ViewTwoComponent | ViewThreeComponent
-  >
-  public componentToLoad: Type<
-    ViewOneComponent | ViewTwoComponent | ViewThreeComponent
-  > = this.comp1
-  public embededViewRef: EmbeddedViewRef<any>
-
-  constructor() {}
-
-  public queueComponent(componentToLoad) {
+  public loadComponent(component) {
     this.vcr.clear()
-    this.componentToLoad = componentToLoad
+    this.facade.loadComponent(component)
   }
 
   public handleAnimationDone(e: AnimationEvent) {
     if (e.toState !== 'in') {
       this.vcr.createEmbeddedView(this.tpl)
     }
+  }
+
+  ngOnInit() {
+    this.currentComponent$ = this.facade.currentComponent$
   }
 }

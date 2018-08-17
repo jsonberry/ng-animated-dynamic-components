@@ -6,6 +6,7 @@ export enum ContainerActionTypes {
 
 export class LoadComponent implements Action {
   readonly type = ContainerActionTypes.LoadComponent
+  constructor(public component: string) {}
 }
 
 export const containerActions = {

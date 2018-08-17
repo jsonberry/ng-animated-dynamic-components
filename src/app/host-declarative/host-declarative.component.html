@@ -1,13 +1,13 @@
-<button (click)="queueComponent(comp1)">Load One</button>
-<button (click)="queueComponent(comp2)">Load Two</button>
-<button (click)="queueComponent(comp3)">Load Three</button>
+<button (click)="loadComponent('one')">Load One</button>
+<button (click)="loadComponent('two')">Load Two</button>
+<button (click)="loadComponent('three')">Load Three</button>
 
 <ng-template #tpl>
   <div
     [@flyInOut]="'in'"
     (@flyInOut.done)="handleAnimationDone($event)"
   >
-    <ng-container [ngComponentOutlet]="componentToLoad"></ng-container>
+    <ng-container [ngComponentOutlet]="currentComponent$ | async"></ng-container>
   </div>
 </ng-template>
 

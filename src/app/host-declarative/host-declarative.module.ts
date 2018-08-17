@@ -4,6 +4,7 @@ import {ViewTwoModule} from '@/view-two'
 import {CommonModule} from '@angular/common'
 import {NgModule} from '@angular/core'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {ContainerStateModule} from '../container-state/container-state.module'
 import {HostDeclarativeComponent} from './host-declarative.component'
 
 @NgModule({
@@ -13,6 +14,7 @@ import {HostDeclarativeComponent} from './host-declarative.component'
     ViewTwoModule,
     ViewThreeModule,
     BrowserAnimationsModule,
+    ContainerStateModule,
   ],
   exports: [HostDeclarativeComponent],
   declarations: [HostDeclarativeComponent],

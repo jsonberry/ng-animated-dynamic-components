@@ -1,13 +1,13 @@
-import { ContainerStateModule } from './container-state.module';
+import {ContainerStateModule} from './container-state.module'
 
 describe('ContainerStateModule', () => {
-  let containerStateModule: ContainerStateModule;
+  let containerStateModule: ContainerStateModule
 
   beforeEach(() => {
-    containerStateModule = new ContainerStateModule();
-  });
+    containerStateModule = new ContainerStateModule()
+  })
 
   it('should create an instance', () => {
-    expect(containerStateModule).toBeTruthy();
-  });
-});
+    expect(containerStateModule).toBeTruthy()
+  })
+})

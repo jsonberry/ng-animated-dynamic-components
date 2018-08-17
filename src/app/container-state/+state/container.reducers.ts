@@ -1,12 +1,12 @@
-import {ActionReducerMap, Action} from '@ngrx/store'
+import {ActionReducerMap} from '@ngrx/store'
 import {Type} from '@angular/core'
 import {
   ContainerActionsUnion,
   ContainerActionTypes,
-} from '@/container-state/+state/container.actions'
-import {ViewOneComponent} from '@/view-one'
-import {ViewTwoComponent} from '@/view-two'
-import {ViewThreeComponent} from '@/view-three'
+} from './container.actions'
+import {ViewOneComponent} from '../../view-one'
+import {ViewTwoComponent} from '../../view-two'
+import {ViewThreeComponent} from '../../view-three'
 
 export interface State {
   components: Type<any>[]
@@ -15,7 +15,7 @@ export interface State {
 
 export const initialState: State = {
   components: [ViewOneComponent, ViewTwoComponent, ViewThreeComponent],
-  currentComponent: null,
+  currentComponent: ViewOneComponent,
 }
 
 export function components(
@@ -23,9 +23,6 @@ export function components(
   action: ContainerActionsUnion,
 ): Type<any>[] {
   switch (action.type) {
-    case ContainerActionTypes.LoadComponent:
-      return [...state]
-
     default:
       return state
   }
@@ -37,7 +34,17 @@ export function currentComponent(
 ): Type<any> {
   switch (action.type) {
     case ContainerActionTypes.LoadComponent:
-      return ViewOneComponent
+      switch (action.component) {
+        case 'one':
+          return ViewOneComponent
+        case 'two':
+          return ViewTwoComponent
+        case 'three':
+          return ViewThreeComponent
+
+        default:
+          return ViewOneComponent
+      }
 
     default:
       return state
