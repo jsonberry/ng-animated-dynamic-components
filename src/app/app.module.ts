@@ -7,6 +7,7 @@ import {ContainerStateModule} from './container-state/container-state.module'
 import {HostDeclarativeModule} from './host-declarative/host-declarative.module'
 import {HostModule} from './host/host.module'
 
+// just something dumb for stackblitz
 @NgModule({
   declarations: [AppComponent],
   imports: [
